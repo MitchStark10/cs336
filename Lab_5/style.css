@@ -1,0 +1,70 @@
+body {
+        font: 24px Helvetica;
+        background: #999999;
+    }
+
+    #main {
+        min-height: 800px;
+        margin: 0px;
+        padding: 0px;
+        display: flex;
+        flex-flow: row;
+    }
+ 
+    #main > article {
+        margin: 4px;
+        padding: 30px;
+        border: 1px solid #cccc33;
+        background: #dddd88;
+        flex: 3 1 60%;
+        order: 2;
+    }
+
+    #main > nav {
+        margin: 4px;
+        padding: 30px;
+        border: 1px solid #8888bb;
+        background: #ccccff;
+        flex: 1 6 20%;
+        order: 1;
+    }
+  
+    #main > aside {
+        margin: 4px;
+        padding: 30px;
+        border: 1px solid #8888bb;
+        background: #ccccff;
+        flex: 1 6 20%;
+        order: 3;
+    }
+ 
+    header, footer {
+        display: block;
+        font: 40px Arial;
+        margin: 4px;
+        padding: 30px;
+        min-height: 100px;
+        border: 1px solid #eebb55;
+        background: #ffeebb;
+    }
+ 
+    /* Too narrow to support three columns */
+    @media all and (max-width: 640px) {
+        #main, #page {
+            flex-direction: column;
+        }
+
+        #main > article, #main > nav, #main > aside {
+        /* Return them to document order */
+            order: 0;
+        }
+
+        #main > nav {
+        	text-align: right;
+        }
+
+        #main > nav, #main > aside, header, footer {
+            min-height: 80px;
+            max-height: 50px;
+        }
+    }
