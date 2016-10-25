@@ -32,7 +32,7 @@ app.use(express.static('public'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
-app.get('/', (req, res) => {
+app.get('/people', (req, res) => {
 	res.json(list_of_people)
 })
 
@@ -45,6 +45,30 @@ app.get('/:loginId', (req, res) => {
 		}
 	}
 	res.sendStatus(404)
+})
+
+app.delete('/:loginId', (req, res) => {
+	const id = req.params["loginId"]
+	for (person of list_of_people) {
+		if (person["loginId"] == id) {
+			index = list_of_people.indexOf(person)
+			list_of_people.splice(index, 1)
+			res.send("Succesfully deleted " + person.first_name + " " + person.last_name)
+		}
+	}
+})
+
+app.put('/:loginId', (req, res) => {
+	const id = req.params["loginId"]
+	for (person of list_of_people) {
+		if (id == person["loginId"]) {
+			person.first_name = req.body.first
+			person.last_name = req.body.last
+			person.loginId = req.body.id
+			person.startDate = req.body.startDate
+			res.send("Updated:)")
+		}
+	}
 })
 
 app.get('/:loginId/name', (req, res) => {
