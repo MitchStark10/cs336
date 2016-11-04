@@ -17,10 +17,13 @@
     "style-loader": "^0.13.1",
     "webpack": "^1.13.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "webpack-dev-server": "^1.16.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --progress",
+    "dev": "node server.js & webpack-dev-server --progress",
     "start": "webpack && node server.js"
   },
   "repository": {
