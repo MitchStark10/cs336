@@ -72,7 +72,7 @@ app.listen(app.get('port'), function() {
   console.log('Server started: http://localhost:' + app.get('port') + '/');
 });
 
-var mongoUrl = 'mongodb://cs336:PASSWORD@ds147167.mlab.com:47167/cs336'
+var mongoUrl = 'mongodb://cs336:' + process.env.PASSWORD + '@ds147167.mlab.com:47167/cs336'
 MongoClient.connect(mongoUrl, function(err, dbConnection) {
 	if (err) {
 		throw err
