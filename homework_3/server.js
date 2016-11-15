@@ -134,7 +134,7 @@ app.listen(3000, () => {
 	console.log("listening on port 3000")
 })
 
-var mongoUrl = 'mongodb://cs336:PASSWORD@ds147167.mlab.com:47167/cs336'
+var mongoUrl = 'mongodb://cs336:' + process.env.PASSWORD + '@ds147167.mlab.com:47167/cs336'
 MongoClient.connect(mongoUrl, function(err, dbConnection) {
 	if (err) {
 		throw err
