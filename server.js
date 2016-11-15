@@ -55,13 +55,13 @@ app.post('/api/comments', function(req, res) {
   	author: req.body.author,
   	text: req.body.text
   }
-  db.collection("comments").insertOne(newComment, (err, result) => {
+  db.collection("comments").insertOne(newComment, function(err, result) {
   	if (err) {
   		console.error(err)
   		process.exit(1)
   	}
   	var newId = result.insertedId;
-  	db.collection("bugs").find({_id: newId}).next((err, data) => {
+  	db.collection("bugs").find({_id: newId}).next(function(err, data) {
   		res.json(data)
   	})
   })
