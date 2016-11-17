@@ -30,7 +30,7 @@ app.use(express.static('public'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
-app.get('/people', (req, res) => {
+app.get('/api/people', (req, res) => {
 	{
 		updatePeople()
 	}
@@ -99,7 +99,7 @@ app.get('/:loginId/years', (req, res) => {
 	res.sendStatus(404)
 })
 
-app.post('/add_person', (req, res) => {
+app.post('/api/people', (req, res) => {
 	var new_person = {
 		first_name: req.body.first_name,
 		last_name: req.body.last_name,
@@ -112,9 +112,8 @@ app.post('/add_person', (req, res) => {
 			process.exit(1)
 		}
 	})
-	resData = {"first": req.body.first_name,
-				"last": req.body.last_name}
-	res.json(JSON.stringify(resData))
+	updatePeople()
+	res.json(list_of_people)
 })
 
 app.post('/find_person', (req, res) => {
